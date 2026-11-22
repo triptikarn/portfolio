@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Tripti Karn — Front-End Web Developer</title>
+<meta name="description" content="Tripti Karn — Front-End Web Developer building responsive, interactive interfaces with React, JavaScript, HTML & CSS."/>
+<style>
+  :root{
+    --bg:#120711; --panel:rgba(255,255,255,.045); --line:rgba(255,92,138,.28);
+    --rose:#ff5c8a; --violet:#a78bfa; --soft:#ffd6e4; --text:#f5f0f5; --mute:#c4a4be;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:"Segoe UI",system-ui,-apple-system,sans-serif;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .glow{position:fixed;border-radius:50%;filter:blur(130px);opacity:.5;pointer-events:none;z-index:0}
+  .g1{width:520px;height:520px;background:#5b1030;top:-160px;left:-120px}
+  .g2{width:460px;height:460px;background:#2c1650;bottom:-140px;right:-100px}
+  nav{position:fixed;top:0;left:0;right:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:18px 6vw;background:rgba(18,7,17,.72);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,92,138,.15)}
+  .logo{font-weight:800;letter-spacing:.14em;font-size:1.05rem}
+  .logo span{background:linear-gradient(90deg,var(--rose),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
+  nav .links{display:flex;gap:28px;font-size:.92rem;color:var(--mute)}
+  nav .links a:hover{color:var(--soft)}
+  main{position:relative;z-index:1}
+  section{padding:110px 6vw;max-width:1180px;margin:0 auto}
+  .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:150px}
+  .pill{display:inline-block;padding:7px 16px;border:1px solid var(--line);border-radius:999px;color:var(--soft);font-size:.82rem;letter-spacing:.12em;width:max-content;background:var(--panel)}
+  h1{font-size:clamp(3rem,9vw,6.2rem);line-height:.98;margin:26px 0 8px;font-weight:900;letter-spacing:.01em}
+  h1 .grad{background:linear-gradient(92deg,var(--rose),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .role{font-size:clamp(1.15rem,2.6vw,1.6rem);color:var(--soft);font-weight:600}
+  .hero p{max-width:620px;color:var(--mute);font-size:1.06rem;line-height:1.75;margin:22px 0 34px}
+  .cta{display:flex;gap:16px;flex-wrap:wrap}
+  .btn{padding:14px 30px;border-radius:999px;font-weight:700;font-size:.95rem;transition:.25s}
+  .btn.primary{background:linear-gradient(90deg,var(--rose),#e0447c);color:#fff;box-shadow:0 10px 34px rgba(255,92,138,.35)}
+  .btn.primary:hover{transform:translateY(-3px)}
+  .btn.ghost{border:1px solid var(--line);color:var(--soft);background:var(--panel)}
+  .btn.ghost:hover{border-color:var(--rose)}
+  .stats{display:flex;gap:18px;flex-wrap:wrap;margin-top:56px}
+  .stat{background:var(--panel);border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:20px 26px;min-width:160px}
+  .stat b{font-size:1.9rem;display:block;background:linear-gradient(90deg,var(--rose),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .stat small{color:var(--mute);letter-spacing:.08em;font-size:.74rem;text-transform:uppercase}
+  h2{font-size:clamp(1.9rem,4.5vw,2.8rem);margin-bottom:14px}
+  h2 .grad{background:linear-gradient(90deg,var(--rose),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{color:var(--mute);max-width:640px;line-height:1.7;margin-bottom:44px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:22px}
+  .card{background:var(--panel);border:1px solid rgba(255,255,255,.07);border-radius:22px;padding:28px;transition:.25s;position:relative;overflow:hidden}
+  .card::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:linear-gradient(90deg,var(--rose),var(--violet));opacity:0;transition:.25s}
+  .card:hover{transform:translateY(-6px);border-color:var(--line)}
+  .card:hover::before{opacity:1}
+  .card h3{font-size:1.22rem;margin-bottom:10px}
+  .card p{color:var(--mute);line-height:1.65;font-size:.96rem;min-height:78px}
+  .tags{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 20px}
+  .tag{font-size:.72rem;padding:5px 12px;border-radius:999px;border:1px solid rgba(167,139,250,.35);color:#d9ccff;letter-spacing:.05em}
+  .card a.open{font-weight:700;color:var(--rose);font-size:.92rem}
+  .card a.open:hover{color:var(--soft)}
+  .skills{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
+  .skill{background:var(--panel);border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:22px}
+  .skill h4{margin-bottom:12px;font-size:1rem}
+  .bar{height:8px;border-radius:99px;background:rgba(255,255,255,.09);overflow:hidden}
+  .bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--rose),var(--violet))}
+  .about p{color:var(--mute);line-height:1.85;max-width:760px;font-size:1.03rem}
+  .contact{text-align:center}
+  .contact .btn{margin-top:10px}
+  footer{padding:34px 6vw;border-top:1px solid rgba(255,92,138,.15);color:var(--mute);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.9rem;position:relative;z-index:1}
+  @media(max-width:640px){nav .links{display:none}section{padding:80px 6vw}}
+</style>
+</head>
+<body>
+<div class="glow g1"></div><div class="glow g2"></div>
+<nav>
+  <div class="logo">TRIPTI <span>KARN</span></div>
+  <div class="links">
+    <a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#about">About</a><a href="#contact">Contact</a>
+  </div>
+</nav>
+<main>
+  <section class="hero">
+    <span class="pill">FRONT-END WEB DEVELOPER</span>
+    <h1>Interfaces that<br/><span class="grad">feel alive.</span></h1>
+    <div class="role">React · JavaScript · HTML &amp; CSS</div>
+    <p>I build responsive pages, interactive dashboards and small web apps — starting from a blank file and polishing until every hover, transition and empty state feels finished.</p>
+    <div class="cta">
+      <a class="btn primary" href="#projects">See my projects</a>
+      <a class="btn ghost" href="https://github.com/triptikarn" target="_blank" rel="noopener">GitHub — @triptikarn</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>16</b><small>Public projects</small></div>
+      <div class="stat"><b>87</b><small>Contributions last year</small></div>
+      <div class="stat"><b>06</b><small>Featured builds</small></div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Things I've <span class="grad">built</span></h2>
+    <p class="sub">Real projects, all live on GitHub — e-commerce, data, music, science and playful UI experiments.</p>
+    <div class="grid">
+      <div class="card"><h3>E-Commerce Website</h3><p>A modern e-commerce web application built with React JS — product listings and a clean shopping interface.</p><div class="tags"><span class="tag">React</span><span class="tag">JavaScript</span><span class="tag">UI</span></div><a class="open" href="https://github.com/triptikarn/E-commerce-website-" target="_blank" rel="noopener">View on GitHub →</a></div>
+      <div class="card"><h3>Lyrics Finder</h3><p>Search songs and view lyrics with search-history support. Built with React + Vite and a public lyrics API.</p><div class="tags"><span class="tag">React</span><span class="tag">Vite</span><span class="tag">API</span></div><a class="open" href="https://github.com/triptikarn/lyrics-finder" target="_blank" rel="noopener">View on GitHub →</a></div>
+      <div class="card"><h3>Data Visualization Dashboard</h3><p>An interactive dashboard with pie, line and bar charts to explore and analyse complex data metrics seamlessly.</p><div class="tags"><span class="tag">JavaScript</span><span class="tag">Charts</span><span class="tag">Dashboard</span></div><a class="open" href="https://github.com/triptikarn/Interactive--visualization-dashboard-" target="_blank" rel="noopener">View on GitHub →</a></div>
+      <div class="card"><h3>3D Periodic Table</h3><p>An interactive 3D periodic table — explore the elements in a playful, visual way.</p><div class="tags"><span class="tag">JavaScript</span><span class="tag">3D</span><span class="tag">CSS</span></div><a class="open" href="https://github.com/triptikarn/Periodic-Table-" target="_blank" rel="noopener">View on GitHub →</a></div>
+      <div class="card"><h3>QR Code Generator</h3><p>An interactive QR code generator — create QR codes instantly, right in the browser.</p><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div><a class="open" href="https://github.com/triptikarn/QR-code-generator" target="_blank" rel="noopener">View on GitHub →</a></div>
+      <div class="card"><h3>Text to Speech</h3><p>A simple web app that converts text into speech with a clean and minimal interface, using the Web Speech API.</p><div class="tags"><span class="tag">JavaScript</span><span class="tag">Web Speech API</span></div><a class="open" href="https://github.com/triptikarn/simple-text-to-speech" target="_blank" rel="noopener">View on GitHub →</a></div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Core <span class="grad">craft</span></h2>
+    <p class="sub">Bars mark focus areas, not scores — this is where my building time actually goes.</p>
+    <div class="skills">
+      <div class="skill"><h4>HTML &amp; CSS</h4><div class="bar"><i style="width:96%"></i></div></div>
+      <div class="skill"><h4>JavaScript</h4><div class="bar"><i style="width:88%"></i></div></div>
+      <div class="skill"><h4>React</h4><div class="bar"><i style="width:80%"></i></div></div>
+      <div class="skill"><h4>Responsive Design</h4><div class="bar"><i style="width:95%"></i></div></div>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <h2>About <span class="grad">me</span></h2>
+    <p>I'm Tripti Karn, a front-end web developer learning in public — 87 contributions in the last year, one small project at a time. My work leans playful: a login page with a working lamp, a hero carousel with smooth transitions, a periodic table you can spin in 3D. Currently exploring deeper React patterns and building a full-stack MERN daily planner. My belief: a page isn't done when it works — it's done when it feels good to use.</p>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Let's build something <span class="grad">beautiful</span></h2>
+    <p class="sub" style="margin-left:auto;margin-right:auto">Open to collaborations, feedback and front-end opportunities.</p>
+    <a class="btn primary" href="mailto:triptikarn6@gmail.com">triptikarn6@gmail.com</a>
+    <a class="btn ghost" href="https://github.com/triptikarn" target="_blank" rel="noopener">GitHub</a>
+  </section>
+</main>
+<footer>
+  <span>© 2026 Tripti Karn</span>
+  <span>Design. Build. Ship.</span>
+</footer>
+</body>
+</html>
